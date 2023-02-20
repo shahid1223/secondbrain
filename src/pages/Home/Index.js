@@ -34,11 +34,11 @@ const Index = () => {
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 2xl:h-96 2xl:w-96" src="../assets/images/cuate.png" alt="Logo" />
         </div>
-        <div className='md:ml-4 xl:ml-4 2xl:ml-8'>
-          <div className="w-289 h-144 font-bold text-black text-xl md:text-2xl leading-8 mt-4 2xl:text-2xl">
-            <p className='text-center md:text-start xl:text-start 2xl:text-start'>Get your all study material in one place and your personalized study partner.</p>
+        <div className='md:ml-4 xl:ml-4 2xl:ml-8 mt-4 mb-14'>
+          <div className="font-extrabold text-black text-xl md:text-2xl leading-9 mt-2 2xl:text-2xl w-72 h-36">
+            <p className='text-center md:text-start'>Get your all study material in one place and your personalized study partner.</p>
           </div>
-          <div className='mt-4 flex justify-center items-center md:justify-start md:items-start xl:justify-start 2xl:justify-start xl:items-start 2xl:items-start'>
+          <div className='mt-1 flex justify-center items-center md:justify-start md:items-start xl:justify-start 2xl:justify-start xl:items-start 2xl:items-start'>
             <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg md:text-xl xl:text-xl 2xl:text-2xl">
               Download App
             </button>
@@ -52,6 +52,7 @@ const Index = () => {
             heading={data.heading}
             image={data.imagePath}
             description={data.description}
+            index={key}
           />
         )
       })}
