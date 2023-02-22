@@ -13,7 +13,6 @@ function Navbar() {
           <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4 ">
                     <div>
-                        <a href="/" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Home</a>
                         <a href="/about" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
                         <a href="/contact" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
                     </div>
@@ -42,7 +41,6 @@ function Navbar() {
       {/* Mobile menu */}
       <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="/" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">Home</a>
           <a href="/about" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">About Us</a>
           <a href="/contact" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">Blog</a>
           <div className="flex-shrink-0">
