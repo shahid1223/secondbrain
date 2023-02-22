@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import image from '../../../assets/images/web/bg.png'
 
 const BlogPreview = (props) => {
-    console.log(props)
     return (
         <Fragment>
             <div className='flex flex-col py-4 px-4 mt-8 mb-8 bg-[#F4F4F4]'>
