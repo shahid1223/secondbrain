@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
+}
+
+.homeFirstContainerBg{
+  background-image: url('./assets/images/vector.png');
+  background-repeat: repeat-x;
+  width: 100%;
+}
+
+.crousalItemBgImg{
+  background-image: url('./assets/images/web/Vector.png');
+  background-repeat: no-repeat;
+  margin: 10px;
 }

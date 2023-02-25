@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -16,14 +15,12 @@ function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4 ">
               <div>
 
-                <div className=" flex items-center">
-                  <div className='bg-blue-400 w-2 h-8'></div>
+
                   <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
-                </div>
-                <div className=" flex items-center">
-                  <div className='bg-blue-400 w-2 h-8'></div>
+
+                
                   <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
-                </div>
+                
                 {/* <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
                 <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a> */}
               </div>
