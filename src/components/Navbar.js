@@ -12,15 +12,15 @@ function Navbar() {
             <img className="h-auto w-auto" src="../assets/iconsandlogo/logo.png" alt="Logo" />
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4 ">
+            <div className="flex items-baseline space-x-4 ">
               <div>
 
 
-                  <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
+                <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
 
-                
-                  <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
-                
+
+                <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
+
                 {/* <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
                 <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a> */}
               </div>

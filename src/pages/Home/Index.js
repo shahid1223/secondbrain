@@ -88,25 +88,29 @@ const Index = () => {
         );
       })}
 
-     <Carousel/>
-     
-      <div className='flex justify-center items-center flex-col md:flex-row mt-4'>
+      <Carousel />
+
+      <div className="flex justify-center items-center flex-col md:flex-row">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
-          <img className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 2xl:h-96 2xl:w-96" src="../assets/images/WEB/home last img.png" alt="Logo" />
+          <img
+            className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 ll:w-[500px] ll:h-[500px]  object-contain"
+            src="../assets/images/WEB/home last img.png"
+            alt="Logo"
+          />
         </div>
-        <div className='m-2'>
-          <div className="w-289 h-144 font-bold text-black text-xl md:text-2xl leading-8 mt-4 2xl:text-2xl">
-            <p className='text-start md:text-start xl:text-start 2xl:text-start'>Get all your study materials at one place, Solve mock test and past papers, create your persnalized your time-table.</p>
-          </div>
-          <div className='m-2'>
-            <div className="w-289 h-144 text-black text-sm md:text-2xl leading-2 mt-4 2xl:text-2xl">
-              <p className='text-start md:text-start xl:text-start 2xl:text-start'>Get all your study materials at one place, Solve mock test and past papers, create your persnalized your time-table</p>
+        <div className="">
+          <div className=" ms:w-80 ml:w-96 ll:w-[630px] w-72">
+            <p className="font-bold text-black text-xl text-center md:text-start md:text-2xl leading-8  ll:text-4xl">
+              Get all your study materials at one place, Solve mock test and past papers, create your persnalized your time-table
+            </p>
+            <p className="mt-4 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.
+            </p>
+            <div className="mt-5  flex justify-center items-center md:justify-start md:items-start xl:justify-start 2xl:justify-start xl:items-start 2xl:items-start">
+              <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-32 font-thin rounded-lg md:text-lg xl:text-xl">
+                Download App
+              </button>
             </div>
-          </div>
-          <div className='mt-4 flex justify-start items-center md:justify-start md:items-start xl:justify-start 2xl:justify-start xl:items-start 2xl:items-start'>
-            <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg md:text-xl xl:text-xl 2xl:text-2xl">
-              Download App
-            </button>
           </div>
         </div>
       </div>
