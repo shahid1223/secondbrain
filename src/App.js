@@ -4,31 +4,22 @@ import AboutUsIndex from "./pages/AboutUs/Index";
 import HomeIndex from "./pages/Home/Index"
 import BlogIndex from "./pages/Blog/Index";
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Route,
+  Routes
 } from "react-router-dom";
+import Footer from "./components/Footer";
 
-function App() {
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomeIndex/>,
-    },
-    {
-      path: "/aboutus",
-      element: <AboutUsIndex/>,
-    },
-    {
-      path: "/blog",
-      element: <BlogIndex/>,
-    }
-  ]);
+const App = () => {
 
   return (
     <Fragment>
       <Navbar/>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<HomeIndex/>}/>
+        <Route path="/aboutus" element={<AboutUsIndex/>}/>
+        <Route path="/blog" element={<BlogIndex/>}/>
+      </Routes>
+      <Footer/>
    </Fragment>
   );
 }

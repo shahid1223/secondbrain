@@ -4,9 +4,9 @@ import Raitings from './Raitings';
 const Carousel = () => {
 
     return (
-        <div className="mx-auto mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2 crousalItemBgImg">
+        <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
             <Raitings check={true} />
-            <p className="text-center m-2 font-medium">
+            <p className="text-center m-2 font-medium md:text-start ml-5">
                 Perfect for learning how the framework works, prototyping a new idea,
                 or creating a demo to share online.Perfect for learning how the framework works, prototyping.
             </p>

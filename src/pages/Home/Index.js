@@ -54,6 +54,7 @@ const Index = () => {
 
   return (
     <Fragment>
+    
       <div className="flex justify-center items-center flex-col md:flex-row homeFirstContainerBg">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
@@ -76,18 +77,19 @@ const Index = () => {
           </div>
         </div>
       </div>
-      {blockArr.map((data, key) => {
-        return (
-          <Block
-            key={key}
-            heading={data.heading}
-            image={data.imagePath}
-            description={data.description}
-            index={key}
-          />
-        );
-      })}
-
+      <div className="md:flex md:justify-center md:items-center md:flex-col">
+        {blockArr.map((data, key) => {
+          return (
+            <Block
+              key={key}
+              heading={data.heading}
+              image={data.imagePath}
+              description={data.description}
+              index={key}
+            />
+          );
+        })}
+        </div>
       <Carousel />
 
       <div className="flex justify-center items-center flex-col md:flex-row">
@@ -100,14 +102,14 @@ const Index = () => {
         </div>
         <div className="">
           <div className=" ms:w-80 ml:w-96 ll:w-[630px] w-72">
-            <p className="font-bold text-black text-xl text-center md:text-start md:text-2xl leading-8  ll:text-4xl">
+            <p className="font-bold text-black text-xl text-start leading-8  ll:text-4xl">
               Get all your study materials at one place, Solve mock test and past papers, create your persnalized your time-table
             </p>
             <p className="mt-4 mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.
             </p>
-            <div className="mt-5  flex justify-center items-center md:justify-start md:items-start xl:justify-start 2xl:justify-start xl:items-start 2xl:items-start">
-              <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-32 font-thin rounded-lg md:text-lg xl:text-xl">
+            <div className="mt-5  flex justify-start items-start">
+              <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 font-thin rounded-lg md:text-lg xl:text-xl">
                 Download App
               </button>
             </div>

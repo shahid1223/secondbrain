@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -16,10 +17,10 @@ function Navbar() {
               <div>
 
 
-                <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
+                <Link to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
 
 
-                <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
+                <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
 
                 {/* <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
                 <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a> */}
@@ -52,11 +53,16 @@ function Navbar() {
 
           <div className=" flex items-center">
             <div className='bg-blue-400 w-2 h-8'></div>
-            <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
+            <Link to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Home</Link>
+          </div>
+
+          <div className=" flex items-center">
+            <div className='bg-blue-400 w-2 h-8'></div>
+            <Link to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
           </div>
           <div className=" flex items-center">
             <div className='bg-blue-400 w-2 h-8'></div>
-            <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a>
+            <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
           </div>
           {/* <a href="/aboutus" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">About Us</a>
           <a href="/blog" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">Blog</a> */}

@@ -4,6 +4,7 @@ const Block = ({ image, heading, description, index }) => {
     const check = index +1;
     return (
         <Fragment>
+        <div className="md:w-[700px] lg:w-[800px]">
             <div className="w-289 h-144 font-semibold text-black text-2xl md:text-2xl leading-8 2xl:text-2xl flex items-center mt-8">
                 <div className='bg-blue-400 w-2 h-8 md:hidden'></div>
                 <p className='text-center text-2xl md:text-start xl:text-start 2xl:text-start ml-2 md:hidden'>{heading}</p>
@@ -21,6 +22,7 @@ const Block = ({ image, heading, description, index }) => {
                         <p className='text-start w-auto font-normal text-base leading-7 '>{description}</p>
                     </div>
                 </div>
+            </div>
             </div>
         </Fragment>
     )
