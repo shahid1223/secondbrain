@@ -1,9 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  // location.pathname.split("/").pop()
+
+  const pathArr = [
+    {
+      name: "Home",
+      pathName: "/"
+    },
+    {
+      name: "About us",
+      pathName: "/aboutus"
+    },
+    {
+      name: "Blog",
+      pathName: "/blog"
+    },
+  ];
 
   return (
     <nav className="bg-white shadow">
@@ -15,15 +32,11 @@ function Navbar() {
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4 ">
               <div>
-
-
-                <Link to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
-
-
-                <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
-
-                {/* <a href="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</a>
-                <a href="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</a> */}
+                {pathArr.map((data, index) => {
+                  return (
+                    <Link key={index} to={data.pathName} className={` px-3 py-2 rounded-md  text-sm font-medium ${location.pathname.split("/").pop() === data.pathName.split("/").pop() ? "text-[#0054B4] underline underline-offset-8" : ""} text-gray-900`}>{data.name}</Link>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -52,10 +65,10 @@ function Navbar() {
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 
           <div className=" flex items-center">
+
             <div className='bg-blue-400 w-2 h-8'></div>
             <Link to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Home</Link>
           </div>
-
           <div className=" flex items-center">
             <div className='bg-blue-400 w-2 h-8'></div>
             <Link to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
@@ -64,8 +77,6 @@ function Navbar() {
             <div className='bg-blue-400 w-2 h-8'></div>
             <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
           </div>
-          {/* <a href="/aboutus" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">About Us</a>
-          <a href="/blog" className="hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium text-gray-900">Blog</a> */}
           <div className="flex-shrink-0">
             <img className="h-auto mt-8 mb-8 w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/Group.png" alt="Logo" />
           </div>

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 const Block = ({ image, heading, description, index }) => {
-    const check = index +1;
+    const check = index + 1;
     return (
         <Fragment>
         <div className="md:w-[700px] lg:w-[800px]">

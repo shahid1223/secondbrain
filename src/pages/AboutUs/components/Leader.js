@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Leader = ({ image, name, position, description }) => {
     return (
-        <div className='md:ml-4 xl:ml-4 2xl:ml-8 p-2 h-auto w-auto  lg:h-96 lg:w-96 xl:h-80 xl:w-80 2xl:h-96 2xl:w-96 md:flex md:justify-center md:items-center'>
+        <Fragment>
+        
+        <div className='md:ml-4 xl:ml-4 2xl:ml-8 p-2 md:w-[700px] lg:w-[800px] md:flex md:justify-center md:items-center'>
             <div className="w-289 h-144 text-black text-sm md:text-2xl leading-2 2xl:text-2xl md:flex md:justify-center md:items-center">
 
                 <div className="flex justify-center items-center">
@@ -15,6 +17,7 @@ const Leader = ({ image, name, position, description }) => {
                 </div>
             </div>
         </div>
+        </Fragment>
     )
 }
 

@@ -46,7 +46,7 @@ const Index = () => {
     return (
         <div>
             <div className="w-289 h-144 font-semibold text-black text-2xl md:text-2xl leading-8 mt-4 2xl:text-2xl mb-4">
-                <p className='text-start md:text-center ml-'>Second brain blog</p>
+                <p className='text-start md:text-center m-4'>Second brain blog</p>
             </div>
             <div className='grid grid-rows-2 grid-flow-col md:grid-rows-1 md:grid-flow-col lg:grid-rows-none lg:flex lg:justify-center lg:items-center gap-1 m-4'>
                 {gridArr.map((data, index) => {
