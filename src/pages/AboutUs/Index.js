@@ -35,7 +35,7 @@ const Index = () => {
       <div className="flex-shrink-0">
         <img className="h-[400px] w-full object-cover" src="../assets/images/web/bg.png" alt="Logo" />
       </div>
-      <div class="md:flex md:justify-center md:items-center md:flex-col">
+      <div className="md:flex md:justify-center md:items-center md:flex-col">
         <div className='md:ml-4 xl:ml-4 2xl:ml-8 p-2 md:w-[700px] lg:w-[800px] md:flex md:justify-center md:items-center'>
           <div className="text-black text-sm md:text-2xl leading-2 2xl:text-2xl">
             {
@@ -55,7 +55,7 @@ const Index = () => {
 
       
 
-      <div class="md:flex md:justify-center md:items-center md:flex-col">
+      <div className="md:flex md:justify-center md:items-center md:flex-col">
      
         {leaderArr.map((data, index) => {
           return <Leader key={index} name={data.name} image={data.image} position={data.position} description={data.description} />
