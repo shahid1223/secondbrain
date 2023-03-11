@@ -26,17 +26,16 @@ const Carousel = () => {
     },
   ];
 
-
   const [index, setindex] = useState(0);
   const nextAndPrevious = (flag) => {
     if (flag === true && index < crousalArr.length - 1) {
       setindex(index + 1);
     } else if (flag === false && index > 0) {
       setindex(index - 1);
-    }else if(index === crousalArr.length - 1){
-        setindex(0);
-    }else{
-        setindex(crousalArr.length - 1);
+    } else if (index === crousalArr.length - 1) {
+      setindex(0);
+    } else {
+      setindex(crousalArr.length - 1);
     }
   };
 
@@ -50,23 +49,27 @@ const Carousel = () => {
         <div>
           <img
             src={crousalArr[index]?.image}
-                        className="h-28 w-28 m-2 rounded-full"
+            className="h-28 w-28 m-2 rounded-full"
             alt="Tailwind Play"
           />
-          <p
-            className="font-bold text-center m-2"
-          >
-            {crousalArr[index]?.name}
-          </p>
-          <p className="text-center">
-            {crousalArr[index]?.year}
-          </p>
+          <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
+          <p className="text-center">{crousalArr[index]?.year}</p>
           <Raitings check={false} />
         </div>
       </div>
       <div className="mt-4 mb-4 flex justify-end m-4 space-x-2">
-        <button className="border h-12 w-12 rounded-full" onClick={() => nextAndPrevious(false)}>{'<'}</button>
-        <button className="border h-12 w-12 rounded-full"  onClick={() => nextAndPrevious(true)}>{'>'}</button>
+        <button
+          className="border h-12 w-12 rounded-full"
+          onClick={() => nextAndPrevious(false)}
+        >
+          {"<"}
+        </button>
+        <button
+          className="border h-12 w-12 rounded-full"
+          onClick={() => nextAndPrevious(true)}
+        >
+          {">"}
+        </button>
       </div>
     </Fragment>
   );
