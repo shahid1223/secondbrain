@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 
   return (
-    <footer className="bg-white shadow mt-8">
+    <footer className="bg-white shadow mt-8 mr-2 ml-2">
       {/* laptop footer */}
       <div className="hidden md:block">
-        <div className="flex justify-between flex-col md:flex-row">
+        <div className="flex justify-around flex-col md:flex-row">
           <div className="flex flex-row">
             <div className="flex-shrink-0 px-3">
               <img
