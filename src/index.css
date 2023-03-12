@@ -3,17 +3,35 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
 }
 
-.homeFirstContainerBg{
+.homeFirstContainerBg {
   background-image: url('./assets/images/vector.png');
   background-repeat: repeat-x;
   width: 100%;
 }
 
-.crousalItemBgImg{
+.crousalItemBgImg {
   background-image: url('./assets/images/web/Vector.png');
   background-repeat: no-repeat;
   margin: 10px;
+}
+
+.slick-prev {
+  display: none !important;
+  background-color: green !important;
+  /* margin-top: 219px !important; */
+  /* position: absolute !important; */
+  /* bottom: 140px !important; */
+  /* right: 10px; */
+}
+
+.slick-next {
+  display: none !important;
+  background-color: green !important;
+  /* margin-top: 219px !important; */
+  /* position: absolute !important; */
+  /* bottom: 140px !important; */
+  /* right: 10px; */
 }

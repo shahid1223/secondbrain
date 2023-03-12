@@ -19,7 +19,7 @@ module.exports = {
 
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
-      
+
       'll': '1440px',
       // => @media (min-width: 1440px) { ... }
       '2xl': '1536px',
@@ -27,6 +27,5 @@ module.exports = {
     }
   },
   plugins: [
-    require('flowbite/plugin')
   ],
 }
