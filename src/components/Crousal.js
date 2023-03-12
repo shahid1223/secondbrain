@@ -41,7 +41,7 @@ const Carousel = () => {
 
   return (
     <Fragment>
-      <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
+      <div className="crousalItemBgImg mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
         <Raitings check={true} />
         <p className="text-center m-2 font-medium md:text-start ml-5">
           {crousalArr[index]?.review}

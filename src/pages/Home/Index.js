@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 const Index = () => {
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  alert(isMobile)
+
   const blockArr = [
     {
       imagePath: "/assets/images/web/Covers 20+ exams.png",
@@ -43,7 +43,6 @@ const Index = () => {
     },
   ];
 
-
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -69,7 +68,7 @@ const Index = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />
@@ -114,7 +113,6 @@ const Index = () => {
 
   return (
     <Fragment>
-
       <div className="flex justify-center items-center flex-col md:flex-row homeFirstContainerBg">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
@@ -150,121 +148,37 @@ const Index = () => {
           );
         })}
       </div>
-      {/* <Carousel /> */}
-
-      <div className="m-2">
-        <Slider {...settings}>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-              <Raitings check={true} />
-              <p className="text-center m-2 font-medium md:text-start ml-5">
-                {crousalArr[index]?.review}
-              </p>
-              <div>
-                <img
-                  src={crousalArr[index]?.image}
-                  className="h-28 w-28 m-2 rounded-full"
-                  alt="Tailwind Play"
-                />
-                <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
-                <p className="text-center">{crousalArr[index]?.year}</p>
-                <Raitings check={false} />
-              </div>
-            </div>
-          </div>
-        </Slider>
-      </div>
-
+      {isMobile
+        ?
+        <Carousel />
+        :
+        <div className="m-2">
+          <Slider {...settings}>
+            {crousalArr.map((data, index) => {
+              return (
+                <div key={index}>
+                  <div className="crousalItemBgImg mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
+                    <Raitings check={true} />
+                    <p className="text-center m-2 font-medium md:text-start ml-5">
+                      {crousalArr[index]?.review}
+                    </p>
+                    <div>
+                      <img
+                        src={crousalArr[index]?.image}
+                        className="h-28 w-28 m-2 rounded-full"
+                        alt="Tailwind Play"
+                      />
+                      <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
+                      <p className="text-center">{crousalArr[index]?.year}</p>
+                      <Raitings check={false} />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </Slider>
+        </div>
+      }
       <div className="flex justify-center items-center flex-col md:flex-row">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
