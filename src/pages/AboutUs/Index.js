@@ -1,7 +1,7 @@
 import React from 'react'
 import img from '../../assets/images/bgleaderone.png'
 import HeadingWithPera from '../../components/HeadingWithPera';
-import Leader from './Components/Leader';
+import Leader from './Components/Leader.js';
 
 const Index = () => {
   const leaderArr = [
