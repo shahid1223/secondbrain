@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Carousel from "../../components/Crousal";
 import Block from "./components/Block";
 import Slider from "react-slick";
@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Index = () => {
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const blockArr = [
     {
