@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Carousel from "../../components/Crousal";
 import Block from "./components/Block";
 import Slider from "react-slick";
@@ -43,27 +43,27 @@ const Index = () => {
     },
   ];
 
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
+  // function SampleNextArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{ ...style, display: "block", background: "red" }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // }
 
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green", position: "relative" }}
-        onClick={onClick}
-      />
-    );
-  }
+  // function SamplePrevArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{ ...style, display: "block", background: "green", position: "relative" }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // }
 
   const settings = {
     dots: false,
@@ -98,18 +98,6 @@ const Index = () => {
     },
   ];
 
-  const [index, setindex] = useState(0);
-  const nextAndPrevious = (flag) => {
-    if (flag === true && index < crousalArr.length - 1) {
-      setindex(index + 1);
-    } else if (flag === false && index > 0) {
-      setindex(index - 1);
-    } else if (index === crousalArr.length - 1) {
-      setindex(0);
-    } else {
-      setindex(crousalArr.length - 1);
-    }
-  };
 
   return (
     <Fragment>
