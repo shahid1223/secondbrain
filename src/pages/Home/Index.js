@@ -148,11 +148,12 @@ const Index = () => {
           );
         })}
       </div>
-      {isMobile
-        ?
-        <Carousel />
-        :
-        <div className="m-2">
+      
+        <div className="md:hidden">
+         <Carousel />
+        </div>
+        
+        <div className="m-2 hidden md:block">
           <Slider {...settings}>
             {crousalArr.map((data, index) => {
               return (
@@ -178,7 +179,7 @@ const Index = () => {
             })}
           </Slider>
         </div>
-      }
+      
       <div className="flex justify-center items-center flex-col md:flex-row">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
