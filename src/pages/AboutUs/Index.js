@@ -53,10 +53,10 @@ const Index = () => {
         </div>
       </div>
 
-
+      
 
       <div className="md:flex md:justify-center md:items-center md:flex-col">
-
+     
         {leaderArr.map((data, index) => {
           return <Leader key={index} name={data.name} image={data.image} position={data.position} description={data.description} />
         })}

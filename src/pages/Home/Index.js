@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Carousel from "../../components/Crousal";
 import Block from "./components/Block";
 import Slider from "react-slick";
@@ -98,6 +98,18 @@ const Index = () => {
     },
   ];
 
+  // const [index, setindex] = useState(0);
+  // const nextAndPrevious = (flag) => {
+  //   if (flag === true && index < crousalArr.length - 1) {
+  //     setindex(index + 1);
+  //   } else if (flag === false && index > 0) {
+  //     setindex(index - 1);
+  //   } else if (index === crousalArr.length - 1) {
+  //     setindex(0);
+  //   } else {
+  //     setindex(crousalArr.length - 1);
+  //   }
+  // };
 
   return (
     <Fragment>
