@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex-shrink-0 px-3">
               <img
                 className="h-auto w-auto block rounded-md text-base font-medium text-gray-900"
-                src="/assets/iconsandlogo/logo.png"
+                src="/assets/iconsandlogo/Logo.svg"
                 alt="Logo"
               />
             </div>
