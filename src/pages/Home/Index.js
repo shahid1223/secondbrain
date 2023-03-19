@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Carousel from "../../components/Crousal";
 import Block from "./components/Block";
 import Slider from "react-slick";
@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Index = () => {
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const blockArr = [
     {
@@ -43,27 +42,27 @@ const Index = () => {
     },
   ];
 
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
+  // function SampleNextArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{ ...style, display: "block", background: "red" }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // }
 
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green", position: "relative" }}
-        onClick={onClick}
-      />
-    );
-  }
+  // function SamplePrevArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{ ...style, display: "block", background: "green", position: "relative" }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // }
 
   const settings = {
     dots: false,
@@ -98,18 +97,18 @@ const Index = () => {
     },
   ];
 
-  const [index, setindex] = useState(0);
-  const nextAndPrevious = (flag) => {
-    if (flag === true && index < crousalArr.length - 1) {
-      setindex(index + 1);
-    } else if (flag === false && index > 0) {
-      setindex(index - 1);
-    } else if (index === crousalArr.length - 1) {
-      setindex(0);
-    } else {
-      setindex(crousalArr.length - 1);
-    }
-  };
+  // const [index, setindex] = useState(0);
+  // const nextAndPrevious = (flag) => {
+  //   if (flag === true && index < crousalArr.length - 1) {
+  //     setindex(index + 1);
+  //   } else if (flag === false && index > 0) {
+  //     setindex(index - 1);
+  //   } else if (index === crousalArr.length - 1) {
+  //     setindex(0);
+  //   } else {
+  //     setindex(crousalArr.length - 1);
+  //   }
+  // };
 
   return (
     <Fragment>
@@ -148,11 +147,12 @@ const Index = () => {
           );
         })}
       </div>
-      {isMobile
-        ?
-        <Carousel />
-        :
-        <div className="m-2">
+      
+        <div className="md:hidden">
+         <Carousel />
+        </div>
+        
+        <div className="m-2 hidden md:block">
           <Slider {...settings}>
             {crousalArr.map((data, index) => {
               return (
@@ -178,7 +178,7 @@ const Index = () => {
             })}
           </Slider>
         </div>
-      }
+      
       <div className="flex justify-center items-center flex-col md:flex-row">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
