@@ -27,7 +27,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <img className="h-auto w-auto" src="../assets/iconsandlogo/logo.png" alt="Logo" />
+            <img className="h-auto w-auto" src="/assets/iconsandlogo/logo.png" alt="Logo" />
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4 ">
@@ -78,20 +78,20 @@ function Navbar() {
             <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
           </div>
           <div className="flex-shrink-0">
-            <img className="h-auto mt-8 mb-8 w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/Group.png" alt="Logo" />
+            <img className="h-auto mt-8 mb-8 w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/Group.png" alt="Logo" />
           </div>
           <div className="flex items-baseline space-x-4">
             <div className="flex-shrink-0">
-              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/mdi_instagram.png" alt="Logo" />
+              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/mdi_instagram.png" alt="Logo" />
             </div>
             <div className="flex-shrink-0">
-              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/ic_baseline-facebook.png" alt="Logo" />
+              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/ic_baseline-facebook.png" alt="Logo" />
             </div>
             <div className="flex-shrink-0">
-              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/jam_linkedin-square.png" alt="Logo" />
+              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/jam_linkedin-square.png" alt="Logo" />
             </div>
             <div className="flex-shrink-0">
-              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="../assets/iconsandlogo/ph_twitter-logo.png" alt="Logo" />
+              <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/ph_twitter-logo.png" alt="Logo" />
             </div>
           </div>
         </div>

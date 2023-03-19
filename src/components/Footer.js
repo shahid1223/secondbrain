@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex-shrink-0 px-3">
               <img
                 className="h-auto w-auto block rounded-md text-base font-medium text-gray-900"
-                src="../assets/iconsandlogo/logo.png"
+                src="/assets/iconsandlogo/logo.png"
                 alt="Logo"
               />
             </div>
@@ -74,28 +74,28 @@ const Footer = () => {
               <div className="flex-shrink-0">
                 <img
                   className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-                  src="../assets/iconsandlogo/mdi_instagram.png"
+                  src="/assets/iconsandlogo/mdi_instagram.png"
                   alt="Logo"
                 />
               </div>
               <div className="flex-shrink-0">
                 <img
                   className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-                  src="../assets/iconsandlogo/ic_baseline-facebook.png"
+                  src="/assets/iconsandlogo/ic_baseline-facebook.png"
                   alt="Logo"
                 />
               </div>
               <div className="flex-shrink-0">
                 <img
                   className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-                  src="../assets/iconsandlogo/jam_linkedin-square.png"
+                  src="/assets/iconsandlogo/jam_linkedin-square.png"
                   alt="Logo"
                 />
               </div>
               <div className="flex-shrink-0">
                 <img
                   className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-                  src="../assets/iconsandlogo/ph_twitter-logo.png"
+                  src="/assets/iconsandlogo/ph_twitter-logo.png"
                   alt="Logo"
                 />
               </div>
@@ -104,7 +104,7 @@ const Footer = () => {
               <p className="text-lg font-bold">Download App</p>
               <img
                 className="h-auto mb-8 w-auto block  py-2 rounded-md text-base font-medium text-gray-900"
-                src="../assets/iconsandlogo/Group.png"
+                src="/assets/iconsandlogo/Group.png"
                 alt="Logo"
               />
             </div>
@@ -166,28 +166,28 @@ const Footer = () => {
           <div className="flex-shrink-0">
             <img
               className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-              src="../assets/iconsandlogo/mdi_instagram.png"
+              src="/assets/iconsandlogo/mdi_instagram.png"
               alt="Logo"
             />
           </div>
           <div className="flex-shrink-0">
             <img
               className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-              src="../assets/iconsandlogo/ic_baseline-facebook.png"
+              src="/assets/iconsandlogo/ic_baseline-facebook.png"
               alt="Logo"
             />
           </div>
           <div className="flex-shrink-0">
             <img
               className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-              src="../assets/iconsandlogo/jam_linkedin-square.png"
+              src="/assets/iconsandlogo/jam_linkedin-square.png"
               alt="Logo"
             />
           </div>
           <div className="flex-shrink-0">
             <img
               className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900"
-              src="../assets/iconsandlogo/ph_twitter-logo.png"
+              src="/assets/iconsandlogo/ph_twitter-logo.png"
               alt="Logo"
             />
           </div>
@@ -196,7 +196,7 @@ const Footer = () => {
           <p className="text-lg font-bold">Download App</p>
           <img
             className="h-auto mb-8 w-auto block  py-2 rounded-md text-base font-medium text-gray-900"
-            src="../assets/iconsandlogo/Group.png"
+            src="/assets/iconsandlogo/Group.png"
             alt="Logo"
           />
         </div>

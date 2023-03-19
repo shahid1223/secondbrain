@@ -117,7 +117,7 @@ const Index = () => {
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
             className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 ll:w-[500px] ll:h-[500px]  object-contain"
-            src="../assets/images/cuate.png"
+            src="/assets/images/cuate.png"
             alt="Logo"
           />
         </div>
@@ -183,7 +183,7 @@ const Index = () => {
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
             className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 ll:w-[500px] ll:h-[500px]  object-contain"
-            src="../assets/images/WEB/home last img.png"
+            src="/assets/images/WEB/home last img.png"
             alt="Logo"
           />
         </div>
