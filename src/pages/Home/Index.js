@@ -181,7 +181,7 @@ const Index = () => {
         </div>
       } */}
 
-      <Carousel />
+      <NewCrausal />
 
       <div className="flex justify-center items-center flex-col md:flex-row">
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
