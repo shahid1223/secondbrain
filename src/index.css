@@ -18,20 +18,32 @@ body {
   margin: 10px;
 }
 
-.slick-prev {
-  display: none !important;
-  background-color: green !important;
-  /* margin-top: 219px !important; */
-  /* position: absolute !important; */
-  /* bottom: 140px !important; */
-  /* right: 10px; */
+.custom-button-group {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 
-.slick-next {
-  display: none !important;
-  background-color: green !important;
-  /* margin-top: 219px !important; */
-  /* position: absolute !important; */
-  /* bottom: 140px !important; */
-  /* right: 10px; */
+.button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.button--previous {
+  margin-right: 0;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: end;
 }

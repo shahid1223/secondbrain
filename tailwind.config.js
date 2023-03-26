@@ -5,12 +5,12 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'sm': '640px',
-      // => @media (min-width: 640px) { ... }
       'ms': '375px',
       // => @media (min-width: 375px) { ... }
       'ml': '425px',
       // => @media (min-width: 425px) { ... }
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
       'md': '768px',
       // => @media (min-width: 768px) { ... }
 

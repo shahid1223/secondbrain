@@ -4,24 +4,24 @@ import Raitings from "./Raitings";
 const Carousel = () => {
   const crousalArr = [
     {
-      review: "Good",
+      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "shahid",
+      name: "Vijay Verma",
       year: "2015",
     },
     {
-      review: "Atiq",
+      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
       image:
         "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "Atiq",
+      name: "Vijay Verma",
       year: "2016",
     },
     {
-      review: "Atmish",
+      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
       image:
         "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "Atmish",
+      name: "Vijay Verma",
       year: "2017",
     },
   ];
@@ -41,7 +41,7 @@ const Carousel = () => {
 
   return (
     <Fragment>
-      <div className="crousalItemBgImg mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
+      <div className="crousalItemBgImg mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2 md:hidden">
         <Raitings check={true} />
         <p className="text-center m-2 font-medium md:text-start ml-5">
           {crousalArr[index]?.review}
@@ -54,7 +54,23 @@ const Carousel = () => {
           />
           <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
           <p className="text-center">{crousalArr[index]?.year}</p>
-          <Raitings check={false} />
+        </div>
+      </div>
+      <div className="sm:hidden md:block">
+        <div className="mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
+          <p className="text-center m-2 font-medium md:text-start ml-5 crousalItemBgImg">
+            {crousalArr[index]?.review}
+          </p>
+          <div>
+            <img
+              src={crousalArr[index]?.image}
+              className="h-28 w-28 m-2 rounded-full"
+              alt="Tailwind Play"
+            />
+            <p className="font-bold text-center m-2">{crousalArr[index]?.name}</p>
+            <p className="text-center">{crousalArr[index]?.year}</p>
+            <Raitings check={true} />
+          </div>
         </div>
       </div>
       <div className="mt-4 mb-4 flex justify-end m-4 space-x-2">
