@@ -34,7 +34,7 @@ function Navbar() {
               <div>
                 {pathArr.map((data, index) => {
                   return (
-                    <Link key={index} to={data.pathName} className={` px-3 py-2 rounded-md  text-sm font-medium ${location.pathname.split("/").pop() === data.pathName.split("/").pop() ? "text-[#0054B4] underline underline-offset-8" : ""} text-gray-900`}>{data.name}</Link>
+                    <Link key={index} to={data.pathName} className={` px-3 py-2 rounded-md hover:text-[#0054B4] focus:text-[#0054B4] text-sm font-medium ${location.pathname.split("/").pop() === data.pathName.split("/").pop() ? "text-[#0054B4] underline underline-offset-8" : ""} text-gray-900`}>{data.name}</Link>
                   )
                 })}
               </div>
