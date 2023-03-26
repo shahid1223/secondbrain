@@ -55,11 +55,14 @@ const PreviousNextMethods = () => {
                     crousalArr.map((data, index) => {
                         return (
                             <div key={index + 1}>
-                                <div className="crousalItemBgImg mx-auto md:m-4 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
+                                <div className=" mx-auto md:m-4 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
                                     <Raitings check={true} />
-                                    <p className="text-center m-2 font-medium md:text-start ml-5 md:w-96">
-                                        {data.review}
-                                    </p>
+                                    <div className="flex flex-col justify-start items-start ml-5">
+                                        <img src="/assets/images/web/Vector.png" alt="hello" className="md:w-12 md:h-12 sm:w-6 sm:h-6" />
+                                        <p className="text-start mt-2 font-medium md:text-start  md:w-96">
+                                            {data.review}
+                                        </p>
+                                    </div>
                                     <div>
                                         <img
                                             src={data.image}
