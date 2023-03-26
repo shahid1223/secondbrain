@@ -1,15 +1,8 @@
-import React, { Fragment, useState } from "react";
-import Carousel from "../../components/Crousal";
+import React, { Fragment } from "react";
 import Block from "./components/Block";
-import Slider from "react-slick";
-import Raitings from "../../components/Raitings";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import NewCrausal from '../../components/NewCrausal';
 
 const Index = () => {
-
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const blockArr = [
     {
@@ -44,73 +37,7 @@ const Index = () => {
     },
   ];
 
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
 
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green", position: "relative" }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />
-  };
-
-  const crousalArr = [
-    {
-      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "shahid",
-      year: "2015",
-    },
-    {
-      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
-      image:
-        "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "Atiq",
-      year: "2016",
-    },
-    {
-      review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.",
-      image:
-        "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
-      name: "Atmish",
-      year: "2017",
-    },
-  ];
-
-  const [index, setindex] = useState(0);
-  const nextAndPrevious = (flag) => {
-    if (flag === true && index < crousalArr.length - 1) {
-      setindex(index + 1);
-    } else if (flag === false && index > 0) {
-      setindex(index - 1);
-    } else if (index === crousalArr.length - 1) {
-      setindex(0);
-    } else {
-      setindex(crousalArr.length - 1);
-    }
-  };
 
   return (
     <Fragment>
@@ -149,37 +76,6 @@ const Index = () => {
           );
         })}
       </div>
-      {/* {isMobile
-        ?
-        <Carousel />
-        :
-        <div className="m-2">
-          <Slider {...settings}>
-            {crousalArr.map((data, index) => {
-              return (
-                <div key={index}>
-                  <div className="crousalItemBgImg mx-auto md:m-10 mt-8 flex justify-center items-center flex-col md:flex-row-reverse bg-[#F6F9FF] py-2 px-2">
-                    <Raitings check={true} />
-                    <p className="text-center m-2 font-medium md:text-start ml-5">
-                      {data.review}
-                    </p>
-                    <div>
-                      <img
-                        src={data.image}
-                        className="h-28 w-28 m-2 rounded-full"
-                        alt="Tailwind Play"
-                      />
-                      <p className="font-bold text-center m-2">{data.name}</p>
-                      <p className="text-center">{data.year}</p>
-                      <Raitings check={false} />
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </Slider>
-        </div>
-      } */}
 
       <NewCrausal />
 
@@ -187,7 +83,7 @@ const Index = () => {
         <div className="flex-shrink-0 md:ml-4 xl:ml-4 2xl:ml-8">
           <img
             className="h-auto w-auto md:h-80 md:w-80 lg:h-96 lg:w-96 xl:h-80 xl:w-80 ll:w-[500px] ll:h-[500px]  object-contain"
-            src="../assets/images/WEB/home last img.png"
+            src="/assets/images/web/home last img.png"
             alt="Logo"
           />
         </div>
