@@ -6,7 +6,7 @@ const Index = () => {
 
   const blockArr = [
     {
-      imagePath: "/assets/images/web/Covers 20+ exams.png",
+      imagePath: "/assets/images/web/covers_20+_exams.png",
       heading: "Covers 20+ exams",
       description:
         "second brain covers 20+ exams which includes NEET,JEE and government and banking exams also.",
