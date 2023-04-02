@@ -47,3 +47,11 @@ body {
   display: flex;
   justify-content: end;
 }
+
+.rdw-editor-wrapper {
+  border: 1px solid rgb(215, 215, 215);
+}
+
+.rdw-editor-main {
+  padding: 10px;
+}

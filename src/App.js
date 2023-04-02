@@ -12,6 +12,7 @@ import {
   useLocation
 } from "react-router-dom";
 import Footer from "./components/Footer";
+import AddBlog from "./pages/Blog/Components/AddBlog";
 
 const App = () => {
   let location = useLocation();
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/aboutus" element={<AboutUsIndex />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/addblog" element={<AddBlog />} />
       </Routes>
       {location.pathname.split('/').pop() === 'login' ? null : <Footer />}
     </Fragment>
