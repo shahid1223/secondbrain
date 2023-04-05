@@ -1,5 +1,5 @@
 const config = {
-    baseUrl: 'https://dev.track-mile.com/api'
+    baseUrl: 'https://record-app-backend.vercel.app/api/v1'
 }
 
 export default config;
