@@ -21,13 +21,16 @@ import { BrowserRouter } from 'react-router-dom';
 // import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import SecondBrainState from './context/SecondBrainState'
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <BrowserRouter>
-    <App />
+    <SecondBrainState>
+      <App />
+    </SecondBrainState>
   </BrowserRouter>
 );
 

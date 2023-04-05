@@ -57,7 +57,7 @@ const SecondBrainState = (props) => {
     },[blogsData])
 
     return (
-        <secondBrainContext.Provider value={{email, password, blogs, blogsData, onChange, login}}>
+        <secondBrainContext.Provider value={{email, password, blogs, isAuthenticated, blogsData, onChange, login}}>
             {props.children}
         </secondBrainContext.Provider>
     )

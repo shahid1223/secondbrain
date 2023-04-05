@@ -1,26 +1,32 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Navbar from "./components/Navbar";
 import AboutUsIndex from "./pages/AboutUs/Index";
 import HomeIndex from "./pages/Home/Index";
 import BlogIndex from "./pages/Blog/Index";
 //authtentication
 import Login from "./pages/auth/Login";
+import secondBrainContext from "./context/Context";
 
 import {
   Route,
   Routes,
-  useLocation
+  useLocation,
+  Navigate
 } from "react-router-dom";
 import Footer from "./components/Footer";
 import AddBlog from "./pages/Blog/Components/AddBlog";
-import SecondBrainState from "./context/SecondBrainState";
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   let location = useLocation();
+
+  
+  const auth = useContext(secondBrainContext);
+  const {isAuthenticated:{isLoading , token}} = auth;
+
   return (
     <Fragment>
-      <SecondBrainState>
+      {/* <SecondBrainState> */}
           <ToastContainer
               position="top-right"
               autoClose={5000}
@@ -40,10 +46,11 @@ const App = () => {
             <Route path="/aboutus" element={<AboutUsIndex />} />
             <Route path="/blog" element={<BlogIndex />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/addblog" element={<AddBlog />} />
+            {/* <Route path="/addblog" element={<AddBlog />} /> */}
+            {isLoading === false && token !== null ? <Route path="/addblog" element={<AddBlog />} /> : "dshfhdfhk"}
           </Routes>
           {location.pathname.split('/').pop() === 'login' ? null : <Footer />}
-      </SecondBrainState>
+      {/* </SecondBrainState> */}
     </Fragment>
   );
 }
