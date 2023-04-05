@@ -1,28 +1,32 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import secondBrainContext from "./Context";
 import { postData, getData } from '../utils/api';
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router";
+
 
 const SecondBrainState = (props) => {
 
-    const [isAuthenticated , setIsAuthenticated] = useState({
-        isLoading:true,
-        token:null
+    const redirect = useNavigate();
+
+    const [isAuthenticated, setIsAuthenticated] = useState({
+        isLoading: true,
+        token: localStorage.getItem('token') !== null ? localStorage.getItem('token') : null
     });
-    
+
     const [loginIfo, setLoginInfo] = useState({
-        email:"",
-        password:""
+        email: "",
+        password: ""
     });
-    
-    const [blogs , setBlogs] = useState([]);
+
+    const [blogs, setBlogs] = useState([]);
 
     const [blogsData, setBlogsData] = useState();
 
     const { email, password } = loginIfo;
 
     const onChange = event => {
-        setLoginInfo({...loginIfo , [event.target.name] : event.target.value});
+        setLoginInfo({ ...loginIfo, [event.target.name]: event.target.value });
     };
 
     const fetchBlogs = () => {
@@ -30,34 +34,35 @@ const SecondBrainState = (props) => {
         setBlogs(results);
     }
 
-    const login = () => {
-        if(!password || !email) {
-        toast.error('Please enter email and password', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+    const login = async () => {
+        if (!password || !email) {
+            toast.error('Please enter email and password', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
             });
-        return;
+            return;
         };
-        const result = postData('/auth/login', loginIfo);
-        setIsAuthenticated({
-            isLoading:false,
-            token:result.token
-        })
+        const result = await postData('/auth/login', loginIfo);
+        localStorage.setItem('token', result.token)
+        setIsAuthenticated({ ...isAuthenticated, isLoading: false })
+        console.log("isAuthenticated", isAuthenticated)
+        redirect('/blog')
         fetchBlogs();
+
     };
 
     useEffect(() => {
         fetchBlogs();
-    },[blogsData])
+    }, [blogsData])
 
     return (
-        <secondBrainContext.Provider value={{email, password, blogs, isAuthenticated, blogsData, onChange, login}}>
+        <secondBrainContext.Provider value={{ email, password, blogs, isAuthenticated, blogsData, onChange, login }}>
             {props.children}
         </secondBrainContext.Provider>
     )

@@ -17,7 +17,7 @@ let headerData = {
     'ACCEPT_ENCODING': 'gzip, deflate',
     'ACCEPT_LANGUAGE': "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
     "Upgrade-Insecure-Requests": 1,
-    "authorization":"shahid"
+    "authorization": "shahid"
 }
 
 // const authHeader = () => {
@@ -40,7 +40,7 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
     try {
         // let newheaders = { ...headerData, ...headerObj, ...authHeader() }
         let newheaders = { ...headerData, ...headerObj }
-        const response = await fetch(config.baseUrl+url, {
+        const response = await fetch(config.baseUrl + url, {
             method: 'POST',
             headers: newheaders,
             referrerPolicy: 'no-referrer',
@@ -49,7 +49,6 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
         // if (response && response.status === 401){
         //   unAuthorizedToken()
         // }
-        console.log(response);
         return response.json(); // parses JSON response into native JavaScript objects
     } catch (error) {
         throw error;
@@ -59,7 +58,7 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
 const getData = async (url = '', headerObj = {}) => {
     try {
         let newheaders = { ...headerData, ...headerObj }
-        const response = await fetch(config.baseUrl+url, {
+        const response = await fetch(config.baseUrl + url, {
             method: 'GET',
             headers: newheaders,
             referrerPolicy: 'no-referrer'
