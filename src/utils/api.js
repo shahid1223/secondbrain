@@ -9,18 +9,26 @@ export function fetchCount(amount = 1) {
     );
 }
 
-const showAlert = (type , msg) => {
-       toast[type](msg, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+
+let toastConfig = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    }
+
+const showToast = (type, msg) => {
+    if(type === 'error'){
+        toast.error(msg, toastConfig);
+    }else if(type === 'success'){
+        toast.success(msg, toastConfig);
+    }
 }
+
 
 
 let headerData = {
@@ -66,7 +74,7 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
         // }
         return response.json(); // parses JSON response into native JavaScript objects
     } catch (error) {
-        showAlert('error', error.message)
+        showAlert('error', "hshiad")
         throw error;
     }
 }
@@ -131,4 +139,4 @@ const deleteData = async (url = '', headerObj = {}) => {
 // }
 
 
-export { postData, getData, deleteData };
+export { postData, getData, deleteData, showToast };
