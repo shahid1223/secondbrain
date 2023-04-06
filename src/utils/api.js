@@ -10,7 +10,7 @@ export function fetchCount(amount = 1) {
 }
 
 
-let toastConfig = {
+/*let toastConfig = {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -27,7 +27,7 @@ const showToast = (type, msg) => {
     }else if(type === 'success'){
         toast.success(msg, toastConfig);
     }
-}
+}*/
 
 
 
@@ -74,7 +74,6 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
         // }
         return response.json(); // parses JSON response into native JavaScript objects
     } catch (error) {
-        showAlert('error', "hshiad")
         throw error;
     }
 }
@@ -139,4 +138,4 @@ const deleteData = async (url = '', headerObj = {}) => {
 // }
 
 
-export { postData, getData, deleteData, showToast };
+export { postData, getData, deleteData };
