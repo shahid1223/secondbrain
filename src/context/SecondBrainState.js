@@ -51,7 +51,7 @@ const SecondBrainState = (props) => {
         const result = await postData('/auth/login', loginIfo);
         localStorage.setItem('token', result.token)
         setIsAuthenticated({ ...isAuthenticated, isLoading: false })
-        console.log("isAuthenticated", isAuthenticated)
+        console.log("result", result)
         redirect('/blog')
         fetchBlogs();
 
