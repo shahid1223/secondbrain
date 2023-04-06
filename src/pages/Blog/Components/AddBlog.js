@@ -42,7 +42,11 @@ function AddBlog() {
     return (
         <div className="flex justify-center items-center flex-col mt-4 mb-4">
 
-            <button onClick={handleSaveClick}>Save</button>
+            
+            <div
+                className="preview"
+                dangerouslySetInnerHTML={createMarkup(convertedContent)}>
+            </div>
 
             <Editor
                 editorState={editorState}
@@ -65,11 +69,7 @@ function AddBlog() {
                     ],
                 }}
             />
-
-            <div
-                className="preview"
-                dangerouslySetInnerHTML={createMarkup(convertedContent)}>
-            </div>
+            <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={handleSaveClick}>Save</button>
         </div>
     )
 }
