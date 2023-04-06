@@ -38,10 +38,18 @@ function AddBlog() {
         console.log(jsonString)
     }
     console.log(convertedContent);
+    
+      let className = 'RichEditor-editor';
+        var contentState = editorState.getCurrentContent();
+        if (!contentState.hasText()) {
+          if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+            className += ' RichEditor-hidePlaceholder';
+          }
+        }
 
     return (
         <div className="flex justify-center items-center flex-col mt-4 mb-4">
-            
+            <div>{JSON.stringify(convertToRaw(editorState.getCurrentContent()))}</div>
             <div
                 className="preview mt-4 mb-4 text-start"
                 dangerouslySetInnerHTML={createMarkup(convertedContent)}>
