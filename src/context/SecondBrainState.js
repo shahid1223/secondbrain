@@ -52,9 +52,10 @@ const SecondBrainState = (props) => {
         localStorage.setItem('token', result.token)
         setIsAuthenticated({ ...isAuthenticated, isLoading: false })
         console.log("result", result)
-        redirect('/blog')
-        fetchBlogs();
-
+        if(result?.code === 200){
+            redirect('/blog')
+            fetchBlogs();
+        }
     };
 
     useEffect(() => {
