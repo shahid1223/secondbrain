@@ -40,11 +40,10 @@ function AddBlog() {
     console.log(convertedContent);
 
     return (
-        <div className="flex justify-center items-center flex-col mt-4 mb-4">
-
+        <div className="flex justify-center items-start flex-col mt-4 mb-4">
             
             <div
-                className="preview"
+                className="preview mt-4 mb-4"
                 dangerouslySetInnerHTML={createMarkup(convertedContent)}>
             </div>
 
@@ -69,7 +68,7 @@ function AddBlog() {
                     ],
                 }}
             />
-            <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={handleSaveClick}>Save</button>
+            <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 mt-4 rounded-lg" onClick={handleSaveClick}>Save</button>
         </div>
     )
 }
