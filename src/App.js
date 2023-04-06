@@ -42,7 +42,8 @@ const App = () => {
         <Route path="/aboutus" element={<AboutUsIndex />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/login" element={<Login />} />
-        {isLoading === false && token !== null && <Route path="/addblog" element={<AddBlog />} />}
+        <Route path="/addblog" element={<AddBlog />} />
+        /*{isLoading === false && token !== null && <Route path="/addblog" element={<AddBlog />} />}*/
       </Routes>
       {location.pathname.split('/').pop() === 'login' ? null : <Footer />}
     </Fragment>
