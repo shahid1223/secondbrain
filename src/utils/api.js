@@ -1,4 +1,5 @@
 import config from "./constants/config";
+import { toast } from 'react-toastify';
 
 
 // A mock function to mimic making an async request for data
@@ -7,6 +8,20 @@ export function fetchCount(amount = 1) {
         setTimeout(() => resolve({ data: amount }), 500)
     );
 }
+
+const showAlert = (type , msg) => {
+       toast[type](msg, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+}
+
 
 let headerData = {
     'Source': 'Desktop',
@@ -51,6 +66,7 @@ const postData = async (url = '', data = {}, headerObj = {}) => {
         // }
         return response.json(); // parses JSON response into native JavaScript objects
     } catch (error) {
+        showAlert('error', error.message)
         throw error;
     }
 }
