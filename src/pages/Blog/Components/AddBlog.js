@@ -40,10 +40,10 @@ function AddBlog() {
     console.log(convertedContent);
 
     return (
-        <div className="flex justify-center items-start flex-col mt-4 mb-4">
+        <div className="flex justify-center items-center flex-col mt-4 mb-4">
             
             <div
-                className="preview mt-4 mb-4"
+                className="preview mt-4 mb-4 text-start"
                 dangerouslySetInnerHTML={createMarkup(convertedContent)}>
             </div>
 
