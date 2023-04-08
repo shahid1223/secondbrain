@@ -40,7 +40,10 @@ let headerData = {
     'ACCEPT_ENCODING': 'gzip, deflate',
     'ACCEPT_LANGUAGE': "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
     "Upgrade-Insecure-Requests": 1,
-    "authorization": "shahid"
+}
+
+if (localStorage.getItem("token")) {
+    headerData.authorization = localStorage.getItem("token")
 }
 
 // const authHeader = () => {
