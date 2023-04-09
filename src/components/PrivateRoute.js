@@ -1,24 +1,16 @@
-import { useContext } from 'react';
-import { Route } from 'react-router-dom';
-import secondBrainContext from '../context/Context';
-import { useNavigate } from "react-router";
+import React from 'react'
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+function Protected({ children }) {
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    const auth = useContext(secondBrainContext);
-    const { isAuthenticated: { isLoading, token } } = auth;
-    const redirect = useNavigate();
-    return (
-        <Route
-            {...rest}
-            render={(props) =>
-                token === null && isLoading ? (
-                    redirect('/login')
-                ) : (
-                    <Component {...props} />
-                )
-            }
-        />
-    );
-};
+    const authenicated = useSelector(state => state.auth);
+    const { isAuthenticated, token, loading } = authenicated;
 
-export default PrivateRoute;
+    const isSignedIn = isAuthenticated && token !== null && !loading ? true : false
+
+    if (!isSignedIn) {
+        return <Navigate to="/login" replace />
+    }
+    return children
+}
+export default Protected

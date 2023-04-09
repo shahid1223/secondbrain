@@ -1,5 +1,4 @@
 import config from "./constants/config";
-import { toast } from 'react-toastify';
 
 
 // A mock function to mimic making an async request for data
@@ -41,6 +40,7 @@ let headerData = {
     'ACCEPT_LANGUAGE': "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
     "Upgrade-Insecure-Requests": 1,
 }
+
 
 if (localStorage.getItem("token")) {
     headerData.authorization = localStorage.getItem("token")
@@ -98,7 +98,7 @@ const deleteData = async (url = '', headerObj = {}) => {
     try {
         // let newheaders = { ...headerData, ...headerObj, ...authHeader() }
         let newheaders = { ...headerData, ...headerObj }
-        const response = await fetch(url, {
+        const response = await fetch(config.baseUrl + url, {
             method: 'DELETE',
             headers: newheaders,
             referrerPolicy: 'no-referrer',
@@ -106,7 +106,6 @@ const deleteData = async (url = '', headerObj = {}) => {
         // if (response && response.status === 401){
         //   unAuthorizedToken()
         // }
-        console.log(response)
         return response.json(); // parses JSON response into native JavaScript objects
     } catch (error) {
         throw error;

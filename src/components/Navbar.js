@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "../states/auth/authSlice";
 
 function Navbar() {
+
+  const dispatch = useDispatch();
+  const redirect = useNavigate();
+
+  const authenicated = useSelector(state => state.auth);
+  const { isAuthenticated, token, loading } = authenicated;
+
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  // location.pathname.split("/").pop()
 
   const pathArr = [
     {
@@ -21,6 +28,7 @@ function Navbar() {
       pathName: "/blog"
     },
   ];
+
 
   return (
     <nav className="bg-white shadow">
@@ -44,6 +52,16 @@ function Navbar() {
             <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
               Download App
             </button>
+            {isAuthenticated && token !== null && !loading &&
+              <>
+                <button className="m-4 bg-[#0054B4] text-left hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={() => redirect('/addblog')}>
+                  New Blog
+                </button>
+                <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg ml-4" onClick={() => dispatch(logout())}>
+                  Logout
+                </button>
+              </>
+            }
           </div>
           <div className="-mr-2 flex md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} type="button" className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">

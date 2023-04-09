@@ -21,16 +21,20 @@ import { BrowserRouter } from 'react-router-dom';
 // import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import SecondBrainState from './context/SecondBrainState'
+import SecondBrainState from './context/SecondBrainState';
+import store from './states/store';
+import { Provider } from 'react-redux';
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <BrowserRouter>
-    <SecondBrainState>
-      <App />
-    </SecondBrainState>
+    <Provider store={store}>
+      <SecondBrainState>
+        <App />
+      </SecondBrainState>
+    </Provider>
   </BrowserRouter>
 );
 

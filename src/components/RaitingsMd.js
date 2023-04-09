@@ -1,7 +1,6 @@
 import React from 'react'
 
 const RaitingsMd = ({ check }) => {
-    console.log(check ? "md:hidden" : "")
 
     return (
         <div className='sm:hidden md:block'>

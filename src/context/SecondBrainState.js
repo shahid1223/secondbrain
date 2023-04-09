@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import secondBrainContext from "./Context";
 import { postData, getData } from '../utils/api';
-import { toast } from 'react-toastify';
 import { useNavigate } from "react-router";
 import showToast from "../utils/ShowAlert";
 
@@ -65,15 +64,13 @@ const SecondBrainState = (props) => {
     };
 
     const uploadBlogs = async (blogData) => {
-        console.log(blogData.replace(/"/g , "'"));
         // return;
         if (!blogData) {
             showToast('error', 'Please provide a blog data');
         } else {
             let obj = {
-                draft : blogData.replace(/"/g , "'")
+                draft: blogData.replace(/"/g, "'")
             }
-            console.log(obj)
             const result = await postData('/blog', obj);
             if (result?.code === 200 || result?.code === 201) {
                 redirect('/blog');
@@ -90,7 +87,7 @@ const SecondBrainState = (props) => {
     }, [blogsData])
 
     return (
-        <secondBrainContext.Provider value={{ email, password, blogs, isAuthenticated, blogsData, onChange, login , uploadBlogs,fetchBlogs}}>
+        <secondBrainContext.Provider value={{ email, password, blogs, isAuthenticated, blogsData, setBlogsData, onChange, login, uploadBlogs, fetchBlogs }}>
             {props.children}
         </secondBrainContext.Provider>
     )

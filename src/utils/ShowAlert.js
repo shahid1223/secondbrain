@@ -9,16 +9,25 @@ let toastConfig = {
     draggable: true,
     progress: undefined,
     theme: "light",
+}
+
+const Alert = (type, msg, code) => {
+    if (code === 200 || code === 201) {
+        toast.success(msg, toastConfig);
+    } else {
+        toast.error(msg, toastConfig);
     }
-const showToast = (type, msg) => {
-    if(typeof msg === 'object'){
+
+}
+
+const showToast = (type, msg, code) => {
+    if (typeof msg === 'object') {
         msg.map((data) => {
             let alertNeMsg = data.message || data.msg || "Something went wrong";
-            toast[type](alertNeMsg, toastConfig);
+            return Alert(type, alertNeMsg, code)
         })
-    }else{
-        toast[type](msg, toastConfig);
-
+    } else {
+        Alert(type, msg, code)
     }
 };
 

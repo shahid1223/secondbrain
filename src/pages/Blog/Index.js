@@ -3,8 +3,12 @@ import BlogPreview from './Components/BlogPreview';
 import manstudyingfinancialanalytics from '../../assets/images/manstudyingfinancialanalytics.png';
 import atthescheduleboard from '../../assets/images/atthescheduleboard.png';
 import studyingatnight from '../../assets/images/studyingatnight.png';
+import { useSelector } from 'react-redux';
 
 const Index = () => {
+
+    const blogs = useSelector(state => state.blog)
+
     const gridArr = ['Exam', 'Motivation', 'Result', 'Career', 'GATE & ESE -Civil'];
     const blogArr = [
         {
@@ -56,9 +60,16 @@ const Index = () => {
             <div className="w-289 h-144 font-semibold text-black text-2xl md:text-2xl leading-8 mt-12 2xl:text-2xl flex justify-center items-center mb-4">
                 <p className='text-center'>Latest blogs</p>
             </div>
+            {/* <div className='flex justify-end items-end m-4'>
+                {isAuthenticated && token !== null && !loading &&
+                    <button className="m-4 bg-[#0054B4] text-left hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={() => console.log("workin")}>
+                        New Blog
+                    </button>
+                }
+            </div> */}
             <div className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2  m-4'>
-                {blogArr.map((data, index) => {
-                    return <BlogPreview key={index} question={data.question} answer={data.answer} image={data.image} />
+                {blogs?.allBlogs?.map((data, index) => {
+                    return <BlogPreview key={index} id={data._id} question={data.question} answer={data.answer} image={data.image} />
                 })}
             </div>
         </div>
