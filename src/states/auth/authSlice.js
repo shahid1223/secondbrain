@@ -10,6 +10,10 @@ const initialAuthState = {
     errors: []
 };
 
+let authObj = {
+    authorization: localStorage.getItem("token")
+}
+
 export const authtenticateUser = createAsyncThunk('auth/authtenticateUser', async (userLoginInfo) => {
     try {
         const response = await postData('/auth/login', userLoginInfo);
@@ -25,7 +29,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const fetchUserDetail = createAsyncThunk('auth/fetchUserDetail', async () => {
     try {
-        const result = await getData('/auth/fetchuserdetails');
+        const result = await getData('/auth/fetchuserdetails',authObj);
         return result;
     } catch (error) {
         return error;

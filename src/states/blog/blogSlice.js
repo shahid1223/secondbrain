@@ -9,9 +9,20 @@ const initialBlogState = {
     errors: []
 };
 
+let authObj = {
+    authorization: localStorage.getItem("token")
+}
+
 export const createBlog = createAsyncThunk('blog/createBlog', async (blog) => {
     try {
-        const response = await postData('/blog', { draft: blog });
+        const {text , question, discription} = blog;
+        console.log(blog)
+        let body = {
+            draft: text,
+            question:question,
+            sortDiscription:discription
+        }
+        const response = await postData('/blog', body, authObj);
         return response;
     } catch (error) {
         return error
@@ -38,7 +49,7 @@ export const fetchSingleBlogById = createAsyncThunk('blog/fetchSingleBlogById', 
 })
 export const deleteBlogById = createAsyncThunk('blog/deleteBlogById', async (id) => {
     try {
-        const result = await deleteData(`/blog/blog/${id}`);
+        const result = await deleteData(`/blog/blog/${id}`, authObj);
         return result;
     } catch (error) {
         return error;

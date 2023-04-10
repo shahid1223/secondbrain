@@ -1,11 +1,19 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import BlogPreview from './Components/BlogPreview';
 import manstudyingfinancialanalytics from '../../assets/images/manstudyingfinancialanalytics.png';
 import atthescheduleboard from '../../assets/images/atthescheduleboard.png';
 import studyingatnight from '../../assets/images/studyingatnight.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllBlogs } from '../../states/blog/blogSlice'; 
 
 const Index = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchAllBlogs());
+    }, [dispatch]);
+
 
     const blogs = useSelector(state => state.blog)
 
@@ -69,7 +77,7 @@ const Index = () => {
             </div> */}
             <div className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2  m-4'>
                 {blogs?.allBlogs?.map((data, index) => {
-                    return <BlogPreview key={index} id={data._id} question={data.question} answer={data.answer} image={data.image} />
+                    return <BlogPreview key={index} id={data._id} question={data.question} answer={data.sortDiscription} image={data.image} />
                 })}
             </div>
         </div>

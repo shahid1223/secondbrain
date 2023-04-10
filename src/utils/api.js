@@ -42,9 +42,11 @@ let headerData = {
 }
 
 
-if (localStorage.getItem("token")) {
-    headerData.authorization = localStorage.getItem("token")
-}
+// if (localStorage.getItem("token")) {
+//     headerData.authorization = localStorage.getItem("token")
+// }
+
+// console.log(headerData);
 
 // const authHeader = () => {
 //   return {}
@@ -61,6 +63,8 @@ if (localStorage.getItem("token")) {
 //       // clear local storage
 //       // clear state
 // }
+
+
 
 const postData = async (url = '', data = {}, headerObj = {}) => {
     try {

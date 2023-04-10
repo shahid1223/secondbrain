@@ -55,3 +55,7 @@ body {
 .rdw-editor-main {
   padding: 10px;
 }
+
+.p-editor-container{
+  width: 50% !important;
+}
