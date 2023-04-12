@@ -28,6 +28,7 @@ function Navbar() {
       pathName: "/blog"
     },
   ];
+  
 
 
   return (
@@ -42,7 +43,7 @@ function Navbar() {
               <div>
                 {pathArr.map((data, index) => {
                   return (
-                    <Link key={index} to={data.pathName} className={` px-3 py-2 rounded-md hover:text-[#0054B4] focus:text-[#0054B4] text-sm font-medium ${location.pathname.split("/").pop() === data.pathName.split("/").pop() ? "text-[#0054B4] underline underline-offset-8" : ""} text-gray-900`}>{data.name}</Link>
+                    <Link key={index} to={data.pathName} onClick={() => setIsOpen(!isOpen)} className={` px-3 py-2 rounded-md hover:text-[#0054B4] focus:text-[#0054B4] text-sm font-medium ${location.pathname.split("/").pop() === data.pathName.split("/").pop() ? "text-[#0054B4] underline underline-offset-8" : ""} text-gray-900`}>{data.name}</Link>
                   )
                 })}
               </div>
@@ -85,15 +86,15 @@ function Navbar() {
           <div className=" flex items-center">
 
             <div className='bg-blue-400 w-2 h-8'></div>
-            <Link to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Home</Link>
+            <Link onClick={() => setIsOpen(!isOpen)} to="/" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Home</Link>
           </div>
           <div className=" flex items-center">
             <div className='bg-blue-400 w-2 h-8'></div>
-            <Link to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
+            <Link onClick={() => setIsOpen(!isOpen)} to="/aboutus" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">About Us</Link>
           </div>
           <div className=" flex items-center">
             <div className='bg-blue-400 w-2 h-8'></div>
-            <Link to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
+            <Link onClick={() => setIsOpen(!isOpen)} to="/blog" className="hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium text-gray-900">Blog</Link>
           </div>
           <div className="flex-shrink-0">
             <img className="h-auto mt-8 mb-8 w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/Group.png" alt="Logo" />
@@ -113,15 +114,21 @@ function Navbar() {
             </div>
           </div>
           <div className="flex justify-start items-start flex-col space-y-3">
-            <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
+            <button onClick={() => setIsOpen(!isOpen)} className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
               Download App
             </button>
             {isAuthenticated && token !== null && !loading &&
               <>
-                <button className=" bg-[#0054B4] text-left hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={() => redirect('/addblog')}>
+                <button className=" bg-[#0054B4] text-left hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={() => {
+                    redirect('/addblog') 
+                    setIsOpen(!isOpen)}
+                  }>
                   New Blog
                 </button>
-                <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg " onClick={() => dispatch(logout())}>
+                <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg " onClick={() => {
+                    dispatch(logout())
+                    setIsOpen(!isOpen)
+                  }}>
                   Logout
                 </button>
               </>

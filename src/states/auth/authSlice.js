@@ -50,7 +50,6 @@ const authSlice = createSlice({
         builder.addCase(authtenticateUser.fulfilled, (state, action) => {
             state.isAuthenticated = true;
             state.loading = false;
-            localStorage.setItem('token', action.payload.token);
             state.token = localStorage.getItem('token');
             if (action.payload.code === 200) {
                 showToast('success', action.payload.message, action.payload.code);

@@ -42,6 +42,7 @@ const Index = () => {
               missionAndStory.map((data, index) => {
                 return (
                   <HeadingWithPera
+                    key={index}
                     heading={data.heading}
                     description={data.description}
                     index={index}

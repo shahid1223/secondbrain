@@ -12,8 +12,10 @@ const Login = () => {
   const authenicated = useSelector(state => state.auth);
   const { isAuthenticated, token, loading } = authenicated;
 
+  console.log(authenicated);
+
   useEffect(() => {
-    if (isAuthenticated && token !== null && !loading) {
+    if (isAuthenticated === true && token !== null && loading ===  false) {
       navigate('/blog');
     }
   }, [isAuthenticated, token, loading, navigate])

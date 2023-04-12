@@ -8,8 +8,9 @@ import React, { useState, useEffect } from "react";
 import { Editor } from "primereact/editor";
 import DOMPurify from 'dompurify';
 import { useDispatch, useSelector } from "react-redux";
-import { createBlog, fetchSingleBlogById } from '../../../states/blog/blogSlice';
+import { createBlog, fetchSingleBlogById, updateBlog } from '../../../states/blog/blogSlice';
 import { useSearchParams } from "react-router-dom";
+
 
 const AddBlog = () => {
 
@@ -24,18 +25,22 @@ const AddBlog = () => {
     draft: text
   });
 
+  console.log(Object.keys(selectedBlog).length);
+
 
   useEffect(() => {
     if (searchParams.get('id') !== null) {
       dispatch(fetchSingleBlogById(searchParams.get('id')));
     } else {
       setText('');
+      setBlogExtraInfo({ ...blogExtraInfo, draft: "", question: "", discription: "" });
     }
   }, [dispatch, searchParams.get('id')]);
 
   useEffect(() => {
     if (selectedBlog?.selectedBlog) {
       setText(selectedBlog.selectedBlog.draft);
+      setBlogExtraInfo({ ...blogExtraInfo, draft: selectedBlog.selectedBlog.draft, question: selectedBlog.selectedBlog.question, discription: selectedBlog.selectedBlog.sortDiscription });
     }
   }, [selectedBlog?.selectedBlog]);
 
@@ -44,10 +49,9 @@ const AddBlog = () => {
   };
 
   useEffect(() => {
-    setBlogExtraInfo({ ...blogExtraInfo, text:text})
-  } ,[text])
+    setBlogExtraInfo({ ...blogExtraInfo, text: text })
+  }, [text])
 
-  console.log("blogExtraInfo => ",blogExtraInfo);
 
 
   // const sanitizedData = () => ({
@@ -65,22 +69,31 @@ const AddBlog = () => {
 
         <div class="mb-6 sm:w-[80%] lg:w-[50%] m-4 space-y-3">
           <label for="Question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Question</label>
-          <input type="text" value={blogExtraInfo.question} id="questuin" name="question" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
+          <input type="text" defaultValue={blogExtraInfo.question} id="questuin" name="question" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <label for="dis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discription</label>
-          <input type="text" value={blogExtraInfo.discription} id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
+          <input type="text" defaultValue={blogExtraInfo.discription} id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner Image</label>
-          <input type="file" id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
+          <input type="file" id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }} />
         </div>
 
 
         <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 mt-4 rounded-lg" onClick={() => {
           if (text) {
-            dispatch(createBlog(blogExtraInfo));
-            setBlogExtraInfo({...blogExtraInfo, question:"", discription:"", draft:""});
-            setText("");
+            if (searchParams.get('id') !== null) {
+              console.log("if", blogExtraInfo)
+              let id = searchParams.get('id');
+              dispatch(updateBlog( {blogExtraInfo, id} ));
+              setBlogExtraInfo({ ...blogExtraInfo, question: "", discription: "", draft: "" });
+              setText("");
+            } else {
+              console.log("else");
+              dispatch(createBlog(blogExtraInfo));
+              setBlogExtraInfo({ ...blogExtraInfo, question: "", discription: "", draft: "" });
+              setText("");
+            }
           }
-        }}>Save</button>
+        }}>{searchParams.get('id') !== null ? "Update" : "Save"}</button>
       </div>
     </>
   )

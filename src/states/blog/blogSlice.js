@@ -17,13 +17,29 @@ let authObj = {
 export const createBlog = createAsyncThunk('blog/createBlog', async (blog) => {
     try {
         const {text , question, discription} = blog;
-        console.log(blog)
         let body = {
             draft: text,
             question:question,
             sortDiscription:discription
         }
         const response = await postData('/blog', body, authObj);
+        return response;
+    } catch (error) {
+        return error
+    }
+});
+
+export const updateBlog = createAsyncThunk('blog/updateBlog', async ({blogExtraInfo , id}) => {
+    console.log(blogExtraInfo, id);
+    return;
+    try {
+        const {text , question, discription} = blogExtraInfo;
+        let body = {
+            draft: text,
+            question:question,
+            sortDiscription:discription
+        }
+        const response = await postData(`/blog/blog${"fdfd"}`, body, authObj);
         return response;
     } catch (error) {
         return error
@@ -82,18 +98,21 @@ const blogSlice = createSlice({
         builder.addCase(fetchAllBlogs.pending, (state) => {
             state.loading = true;
             state.selectedBlog = [];
+            state.selectedBlog = {};
         });
         builder.addCase(fetchAllBlogs.fulfilled, (state, action) => {
             if (action.payload.code === 200) {
                 state.allBlogs = action.payload.allBlogs;
                 state.loading = false;
                 state.selectedBlog = [];
+                state.selectedBlog = {};
             }
         })
         builder.addCase(fetchAllBlogs.rejected, (state, action) => {
             state.allBlogs = [];
             state.loading = false;
             state.selectedBlog = [];
+            state.selectedBlog = {};
         })
 
 
