@@ -12,14 +12,6 @@ const Login = () => {
   const authenicated = useSelector(state => state.auth);
   const { isAuthenticated, token, loading } = authenicated;
 
-  console.log(authenicated);
-
-  useEffect(() => {
-    if (isAuthenticated === true && token !== null && loading ===  false) {
-      navigate('/blog');
-    }
-  }, [isAuthenticated, token, loading, navigate])
-
   const auth = useContext(secondBrainContext);
 
   const { email, password, onChange } = auth;
@@ -39,7 +31,14 @@ const Login = () => {
               <label for="password" className="leading-7 text-sm text-gray-600">Password</label>
               <input type="password" id="password" name="password" required onChange={onChange} defaultValue={password} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => dispatch(authtenticateUser({ email, password }))}>Login</button>
+            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => {
+              let result = dispatch(authtenticateUser({ email, password }));
+              result.then(data =>{
+                if(data.payload.code === 201 || data.payload.code === 200){
+                  navigate('/blog');
+                }
+              })
+            }}>Login</button>
             <p className="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
           </div>
         </div>

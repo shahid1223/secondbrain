@@ -98,6 +98,26 @@ const getData = async (url = '', headerObj = {}) => {
         throw error;
     }
 }
+
+const updateData = async (url = '', data = {}, headerObj = {}) => {
+    try {
+        // let newheaders = { ...headerData, ...headerObj, ...authHeader() }
+        let newheaders = { ...headerData, ...headerObj }
+        const response = await fetch(config.baseUrl + url, {
+            method: 'PATCH',
+            headers: newheaders,
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(data)
+        });
+        // if (response && response.status === 401){
+        //   unAuthorizedToken()
+        // }
+        return response.json(); // parses JSON response into native JavaScript objects
+    } catch (error) {
+        throw error;
+    }
+}
+
 const deleteData = async (url = '', headerObj = {}) => {
     try {
         // let newheaders = { ...headerData, ...headerObj, ...authHeader() }
@@ -144,4 +164,4 @@ const deleteData = async (url = '', headerObj = {}) => {
 // }
 
 
-export { postData, getData, deleteData };
+export { postData, getData, deleteData , updateData};

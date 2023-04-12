@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { postData, getData, deleteData } from '../../utils/api';
+import { postData, getData, deleteData, updateData } from '../../utils/api';
 import showToast from "../../utils/ShowAlert";
-import { useDispatch } from "react-redux";
 
 const initialBlogState = {
     loading: true,
@@ -30,8 +29,6 @@ export const createBlog = createAsyncThunk('blog/createBlog', async (blog) => {
 });
 
 export const updateBlog = createAsyncThunk('blog/updateBlog', async ({blogExtraInfo , id}) => {
-    console.log(blogExtraInfo, id);
-    return;
     try {
         const {text , question, discription} = blogExtraInfo;
         let body = {
@@ -39,7 +36,7 @@ export const updateBlog = createAsyncThunk('blog/updateBlog', async ({blogExtraI
             question:question,
             sortDiscription:discription
         }
-        const response = await postData(`/blog/blog${"fdfd"}`, body, authObj);
+        const response = await updateData(`/blog/blog/${id}`, body, authObj);
         return response;
     } catch (error) {
         return error
@@ -91,6 +88,22 @@ const blogSlice = createSlice({
             }
         });
         builder.addCase(createBlog.rejected, (state, action) => {
+            state.loading = false;
+        });
+
+        //update blog
+        builder.addCase(updateBlog.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateBlog.fulfilled, (state, action) => {
+            if (action.payload.code === 200) {
+                state.selectedBlog = [];
+                showToast('success', action.payload.message, action.payload.code);
+            } else {
+                showToast('error', action.payload.message, action.payload.code);
+            }
+        });
+        builder.addCase(updateBlog.rejected, (state, action) => {
             state.loading = false;
         });
 
