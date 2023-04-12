@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import Footer from "./components/Footer";
 import AddBlog from "./pages/Blog/Components/AddBlog";
+import SingleBlog from "./pages/Blog/Components/SingleBlog";
 import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserDetail } from "./states/auth/authSlice";
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/" element={<HomeIndex />} />
         <Route path="/aboutus" element={<AboutUsIndex />} />
         <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/singleblog" element={<SingleBlog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/addblog" element={<PrivateRoute isSignedIn={isAuthenticated && token !== null && !loading ? true : false}><AddBlog /></PrivateRoute>} />
       </Routes>
