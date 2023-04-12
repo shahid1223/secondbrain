@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postData, getData, deleteData } from '../../utils/api';
 import showToast from "../../utils/ShowAlert";
+import { useDispatch } from "react-redux";
 
 const initialBlogState = {
     loading: true,
@@ -47,9 +48,10 @@ export const fetchSingleBlogById = createAsyncThunk('blog/fetchSingleBlogById', 
         return error;
     }
 })
-export const deleteBlogById = createAsyncThunk('blog/deleteBlogById', async (id) => {
+export const deleteBlogById = createAsyncThunk('blog/deleteBlogById', async (id, {dispatch}) => {
     try {
         const result = await deleteData(`/blog/blog/${id}`, authObj);
+        dispatch(fetchAllBlogs());
         return result;
     } catch (error) {
         return error;
@@ -117,7 +119,9 @@ const blogSlice = createSlice({
         });
         builder.addCase(deleteBlogById.fulfilled, (state, action) => {
             if (action.payload.code === 200) {
-                console.log(action)
+                showToast('success', action.payload.message, action.payload.code);
+            } else {
+                showToast('error', action.payload.message, action.payload.code);
             }
         });
         builder.addCase(deleteBlogById.rejected, (state, action) => {

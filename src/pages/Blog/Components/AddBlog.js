@@ -7,13 +7,11 @@ import "primeicons/primeicons.css";
 import React, { useState, useEffect } from "react";
 import { Editor } from "primereact/editor";
 import DOMPurify from 'dompurify';
-import Context from '../../../context/Context';
 import { useDispatch, useSelector } from "react-redux";
 import { createBlog, fetchSingleBlogById } from '../../../states/blog/blogSlice';
 import { useSearchParams } from "react-router-dom";
-import { async } from "q";
 
-export default function AddBlog() {
+const AddBlog = () => {
 
   const dispatch = useDispatch();
   const selectedBlog = useSelector(state => state.blog)
@@ -57,34 +55,38 @@ export default function AddBlog() {
   // });
   return (
     <>
-      <div className="mt-4 mb-4 container flex justify-center flex-col items-center w-[50%]">
-        <p>{blogExtraInfo.question}</p>
-        <p>{blogExtraInfo.discription}</p>
+      <div className="mt-4 mb-4 flex justify-center flex-col items-center">
+        <p className="text-start">{blogExtraInfo.question}</p>
+        <p className="text-start">{blogExtraInfo.discription}</p>
         <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }}></div>
       </div>
       <div className="flex justify-center items-center flex-col mt-4 mb-4">
 
 
-        <div class="mb-6 w-[50%]">
+        <div class="mb-6 sm:w-[80%] lg:w-[50%] m-4 space-y-3">
           <label for="Question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Question</label>
-          <input type="text" id="questuin" name="question" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
+          <input type="text" value={blogExtraInfo.question} id="questuin" name="question" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <label for="dis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discription</label>
-          <input type="text" id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
+          <input type="text" value={blogExtraInfo.discription} id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner Image</label>
           <input type="file" id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
+          <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }} />
         </div>
 
 
-        <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }} />
         <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 mt-4 rounded-lg" onClick={() => {
           if (text) {
             dispatch(createBlog(blogExtraInfo));
+            setBlogExtraInfo({...blogExtraInfo, question:"", discription:"", draft:""});
+            setText("");
           }
         }}>Save</button>
       </div>
     </>
   )
 }
+
+export default AddBlog
 
 
 

@@ -17,6 +17,9 @@ let authObj = {
 export const authtenticateUser = createAsyncThunk('auth/authtenticateUser', async (userLoginInfo) => {
     try {
         const response = await postData('/auth/login', userLoginInfo);
+        if(response.code === 200){
+            localStorage.setItem("token", response.token);
+        }
         return response;
     } catch (error) {
         return error

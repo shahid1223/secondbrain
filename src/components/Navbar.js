@@ -112,6 +112,21 @@ function Navbar() {
               <img className="h-auto w-auto block px-3 py-2 rounded-md text-base font-medium text-gray-900" src="/assets/iconsandlogo/ph_twitter-logo.png" alt="Logo" />
             </div>
           </div>
+          <div className="flex justify-start items-start flex-col space-y-3">
+            <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
+              Download App
+            </button>
+            {isAuthenticated && token !== null && !loading &&
+              <>
+                <button className=" bg-[#0054B4] text-left hover:bg-blue-700 text-white py-2 px-4 rounded-lg" onClick={() => redirect('/addblog')}>
+                  New Blog
+                </button>
+                <button className="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 rounded-lg " onClick={() => dispatch(logout())}>
+                  Logout
+                </button>
+              </>
+            }
+          </div>
         </div>
       </div>
     </nav>
