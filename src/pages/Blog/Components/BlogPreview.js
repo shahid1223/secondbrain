@@ -14,7 +14,14 @@ const BlogPreview = (props) => {
 
     return (
         <Fragment>
-            <div className=''>
+            <div onClick={() => {
+                navigate({
+                    pathname: '/singleblog',
+                    search: createSearchParams({
+                        id: props.id
+                    }).toString()
+                })
+            }}>
                 {isAuthenticated && token !== null && !loading &&
                     <div className='flex justify-end items-end space-x-2 m-4 -mb-6'>
                         <img className="object-cover w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1827/1827933.png" alt="edit" onClick={() => {
