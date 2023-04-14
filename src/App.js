@@ -32,7 +32,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchUserDetail());
     dispatch(fetchAllBlogs());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Fragment>

@@ -1,6 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import secondBrainContext from '../../context/Context';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { authtenticateUser } from '../../states/auth/authSlice';
 import { useNavigate } from 'react-router';
 
@@ -8,9 +8,6 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const authenicated = useSelector(state => state.auth);
-  const { isAuthenticated, token, loading } = authenicated;
 
   const auth = useContext(secondBrainContext);
 

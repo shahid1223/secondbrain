@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { postData, getData, deleteData, updateData } from '../../utils/api';
+import { getData, deleteData } from '../../utils/api';
 import showToast from "../../utils/ShowAlert";
+import axios from 'axios';
+import config from "../../utils/constants/config";
 
 const initialBlogState = {
     loading: true,
@@ -13,30 +15,40 @@ let authObj = {
     authorization: localStorage.getItem("token")
 }
 
-export const createBlog = createAsyncThunk('blog/createBlog', async (blog) => {
+export const createBlog = createAsyncThunk('blog/createBlog', async ({file, question, draft, discription}) => {
     try {
-        const {text , question, discription} = blog;
-        let body = {
-            draft: text,
-            question:question,
-            sortDiscription:discription
-        }
-        const response = await postData('/blog', body, authObj);
+        const formdata = new FormData();
+        formdata.append('file', file);
+        formdata.append('sortDiscription', discription);
+        formdata.append('question', question);
+        formdata.append('draft', draft);
+
+        const response = await axios.post(config.baseUrl+'/blog', formdata, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'authorization': localStorage.getItem("token")
+              }
+            });
         return response;
     } catch (error) {
         return error
     }
 });
 
-export const updateBlog = createAsyncThunk('blog/updateBlog', async ({blogExtraInfo , id}) => {
+export const updateBlog = createAsyncThunk('blog/updateBlog', async ({file, question, draft, discription , id}) => {
     try {
-        const {text , question, discription} = blogExtraInfo;
-        let body = {
-            draft: text,
-            question:question,
-            sortDiscription:discription
-        }
-        const response = await updateData(`/blog/blog/${id}`, body, authObj);
+        const formdata = new FormData();
+        formdata.append('file', file);
+        formdata.append('sortDiscription', discription);
+        formdata.append('question', question);
+        formdata.append('draft', draft);
+
+        const response = await axios.patch(config.baseUrl+`/blog/blog/${id}`, formdata, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'authorization': localStorage.getItem("token")
+              }
+            });
         return response;
     } catch (error) {
         return error
@@ -81,10 +93,10 @@ const blogSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(createBlog.fulfilled, (state, action) => {
-            if (action.payload.code === 200) {
-                showToast('success', action.payload.message, action.payload.code);
+            if (action.payload.data.code === 200) {
+                showToast('success', action.payload.data.message, action.payload.data.code);
             } else {
-                showToast('error', action.payload.message, action.payload.code);
+                showToast('error', action.payload.data.message, action.payload.data.code);
             }
         });
         builder.addCase(createBlog.rejected, (state, action) => {
@@ -96,11 +108,11 @@ const blogSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(updateBlog.fulfilled, (state, action) => {
-            if (action.payload.code === 200) {
+            if (action.payload.data.code === 200) {
                 state.selectedBlog = [];
-                showToast('success', action.payload.message, action.payload.code);
+                showToast('success', action.payload.data.message, action.payload.data.code);
             } else {
-                showToast('error', action.payload.message, action.payload.code);
+                showToast('error', action.payload.data.message, action.payload.data.code);
             }
         });
         builder.addCase(updateBlog.rejected, (state, action) => {

@@ -27,14 +27,14 @@ const SingleBlog = () => {
       setText('');
       setBlogExtraInfo({ ...blogExtraInfo, draft: "", question: "", discription: "" });
     }
-  }, [dispatch, searchParams.get('id')]);
+  }, [dispatch, searchParams, blogExtraInfo]);
 
   useEffect(() => {
     if (selectedBlog?.selectedBlog) {
       setText(selectedBlog.selectedBlog.draft);
       setBlogExtraInfo({ ...blogExtraInfo, draft: selectedBlog.selectedBlog.draft, question: selectedBlog.selectedBlog.question, discription: selectedBlog.selectedBlog.sortDiscription });
     }
-  }, [selectedBlog?.selectedBlog]);
+  }, [selectedBlog?.selectedBlog, blogExtraInfo]);
 
 
   // const sanitizedData = () => ({
