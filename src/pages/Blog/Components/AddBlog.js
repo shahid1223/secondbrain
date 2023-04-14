@@ -10,6 +10,7 @@ import DOMPurify from 'dompurify';
 import { useDispatch, useSelector } from "react-redux";
 import { createBlog, fetchSingleBlogById, updateBlog } from '../../../states/blog/blogSlice';
 import { useSearchParams, useNavigate } from "react-router-dom";
+import showToast from "../../../utils/ShowAlert";
 
 
 const AddBlog = () => {
@@ -51,7 +52,7 @@ const AddBlog = () => {
     setBlogExtraInfo({ ...blogExtraInfo, text: text })
   }, [text])
 
-
+  const {question,draft,discription} = blogExtraInfo;
 
   // const sanitizedData = () => ({
   //   __html: DOMPurify.sanitize(text)
@@ -72,13 +73,14 @@ const AddBlog = () => {
           <label for="dis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discription</label>
           <input type="text" value={blogExtraInfo.discription} id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner Image</label>
-          <input type="file" id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          <input type="file" onChange={(e) => console.log(e.target.files[0])} id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }} />
         </div>
 
 
         <button class="bg-[#0054B4] hover:bg-blue-700 text-white py-2 px-4 mt-4 rounded-lg" onClick={() => {
-          if (text) {
+          console.log("text => ", text , "discription => ",discription  , "question=> ", question  , "draft=>",draft );
+          if (text !== "" && discription !== "" && question !== "") {
             if (searchParams.get('id') !== null) {
               let id = searchParams.get('id');
               let result = dispatch(updateBlog( {blogExtraInfo, id} ));
@@ -99,6 +101,9 @@ const AddBlog = () => {
                 }
               })
             }
+          }else{
+            
+            showToast('error', 'Please fill all the blog information');
           }
         }}>{Object.keys(selectedBlog?.selectedBlog).length > 0 && searchParams.get('id') !== null ? "Update" : "Save"}</button>
       </div>

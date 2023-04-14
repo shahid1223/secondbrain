@@ -14,14 +14,7 @@ const BlogPreview = (props) => {
 
     return (
         <Fragment>
-            <div onClick={() => {
-                navigate({
-                    pathname: '/singleblog',
-                    search: createSearchParams({
-                        id: props.id
-                    }).toString()
-                })
-            }}>
+            <div>
                 {isAuthenticated && token !== null && !loading &&
                     <div className='flex justify-end items-end space-x-2 m-4 -mb-6'>
                         <img className="object-cover w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1827/1827933.png" alt="edit" onClick={() => {
@@ -36,7 +29,14 @@ const BlogPreview = (props) => {
                     </div>
                 }
 
-                <div className='flex flex-col py-4 px-4 mt-8 mb-8 bg-[#F4F4F4] m-4 rounded-xl'>
+                <div className='flex flex-col py-4 px-4 mt-8 mb-8 bg-[#F4F4F4] m-4 rounded-xl' onClick={() => {
+                    navigate({
+                        pathname: '/singleblog',
+                        search: createSearchParams({
+                            id: props.id
+                        }).toString()
+                    })
+                }}>
                     {/* {isAuthenticated && token !== null && !loading &&
                     <div className='flex justify-end items-end space-x-2 mb-2'>
                         <img className="object-cover w-6 h-6" src="https://cdn-icons-png.flaticon.com/512/1827/1827933.png" alt="edit" onClick={() => {
