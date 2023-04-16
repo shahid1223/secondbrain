@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 import { Editor } from "primereact/editor";
 import DOMPurify from 'dompurify';
 import { useDispatch, useSelector } from "react-redux";
-import { createBlog, fetchSingleBlogById, updateBlog } from '../../../states/blog/blogSlice';
+import { createBlog, fetchSingleBlogById, updateBlog, fetchAllBlogs } from '../../../states/blog/blogSlice';
 import { useSearchParams, useNavigate } from "react-router-dom";
 import showToast from "../../../utils/ShowAlert";
 
@@ -23,7 +23,7 @@ const AddBlog = () => {
 
   const [text, setText] = useState('');
   const [file, setFile] = useState();
-  const [imagePreview , setImagePreview]  = useState();
+  const [imagePreview, setImagePreview] = useState();
   const [blogExtraInfo, setBlogExtraInfo] = useState({
     question: "",
     discription: "",
@@ -37,14 +37,18 @@ const AddBlog = () => {
       setText('');
       setBlogExtraInfo({ ...blogExtraInfo, draft: "", question: "", discription: "" });
     }
-  }, [dispatch, searchParams, blogExtraInfo]);
+  }, [dispatch, searchParams]);
+
 
   useEffect(() => {
     if (selectedBlog?.selectedBlog) {
       setText(selectedBlog.selectedBlog.draft);
       setBlogExtraInfo({ ...blogExtraInfo, draft: selectedBlog.selectedBlog.draft, question: selectedBlog.selectedBlog.question, discription: selectedBlog.selectedBlog.sortDiscription });
+    } else {
+      setText('');
+      setBlogExtraInfo({ ...blogExtraInfo, draft: "", question: "", discription: "" });
     }
-  }, [selectedBlog?.selectedBlog, blogExtraInfo]);
+  }, [selectedBlog?.selectedBlog]);
 
   const onChange = event => {
     setBlogExtraInfo({ ...blogExtraInfo, [event.target.name]: event.target.value });
@@ -52,7 +56,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     setBlogExtraInfo({ ...blogExtraInfo, draft: text })
-  }, [text, blogExtraInfo])
+  }, [text])
 
   const { question, draft, discription } = blogExtraInfo;
 
@@ -63,19 +67,21 @@ const AddBlog = () => {
         let id = searchParams.get('id');
         let result = dispatch(updateBlog({ file, question, draft, discription, id }));
         result.then(data => {
-          if (data.payload.code === 201 || data.payload.code === 200) {
-            redirect('/blog');
+          if (data.payload.data.code === 200 || data.payload.data.code === 201) {
+            dispatch(fetchAllBlogs());
             setBlogExtraInfo({ ...blogExtraInfo, question: "", discription: "", draft: "" });
             setText("");
+            redirect('/blog');
           }
         });
       } else {
-        let result = dispatch(createBlog({file, question, draft, discription}));
+        let result = dispatch(createBlog({ file, question, draft, discription }));
         result.then(data => {
-          if (data.payload.code === 201 || data.payload.code === 200) {
-            redirect('/blog');
+          if (data.payload.data.code === 200 || data.payload.data.code === 201) {
+            dispatch(fetchAllBlogs());
             setBlogExtraInfo({ ...blogExtraInfo, question: "", discription: "", draft: "" });
             setText("");
+            redirect('/blog');
           }
         })
       }
@@ -99,13 +105,13 @@ const AddBlog = () => {
       </div>
       <div className="flex justify-center items-center flex-col mt-4 mb-4">
 
-      {imagePreview && <img src={imagePreview} width='50%' height='40%'  alt="preview"/>}
+        {imagePreview && <img src={imagePreview} width='50%' height='40%' alt="preview" />}
         <div class="mb-6 sm:w-[80%] lg:w-[50%] m-4 space-y-3">
-        <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner Image</label>
-          <input type="file" onChange={onFileChange} id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-          <label for="Question" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Question</label>
+          {/* <label htmlFor="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Banner Image</label>
+          <input type="file" onChange={onFileChange} id="bannerImg" name="bannerImg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> */}
+          <label htmlFor="Question" class="block mb-2 text-sm font-medium text-black dark:text-white">Question</label>
           <input type="text" value={blogExtraInfo.question} id="questuin" name="question" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
-          <label for="dis" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discription</label>
+          <label htmlFor="dis" class="block mb-2 text-sm font-medium text-black dark:text-white">Discription</label>
           <input type="text" value={blogExtraInfo.discription} id="dis" name="discription" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={onChange} />
           <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }} />
         </div>

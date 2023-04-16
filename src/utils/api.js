@@ -164,4 +164,4 @@ const deleteData = async (url = '', headerObj = {}) => {
 // }
 
 
-export { postData, getData, deleteData , updateData};
+export { postData, getData, deleteData, updateData };

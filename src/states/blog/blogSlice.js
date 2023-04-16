@@ -15,7 +15,7 @@ let authObj = {
     authorization: localStorage.getItem("token")
 }
 
-export const createBlog = createAsyncThunk('blog/createBlog', async ({file, question, draft, discription}) => {
+export const createBlog = createAsyncThunk('blog/createBlog', async ({ file, question, draft, discription }) => {
     try {
         const formdata = new FormData();
         formdata.append('file', file);
@@ -23,19 +23,19 @@ export const createBlog = createAsyncThunk('blog/createBlog', async ({file, ques
         formdata.append('question', question);
         formdata.append('draft', draft);
 
-        const response = await axios.post(config.baseUrl+'/blog', formdata, {
-              headers: {
+        const response = await axios.post(config.baseUrl + '/blog', formdata, {
+            headers: {
                 'Content-Type': 'multipart/form-data',
                 'authorization': localStorage.getItem("token")
-              }
-            });
+            }
+        });
         return response;
     } catch (error) {
         return error
     }
 });
 
-export const updateBlog = createAsyncThunk('blog/updateBlog', async ({file, question, draft, discription , id}) => {
+export const updateBlog = createAsyncThunk('blog/updateBlog', async ({ file, question, draft, discription, id }) => {
     try {
         const formdata = new FormData();
         formdata.append('file', file);
@@ -43,12 +43,12 @@ export const updateBlog = createAsyncThunk('blog/updateBlog', async ({file, ques
         formdata.append('question', question);
         formdata.append('draft', draft);
 
-        const response = await axios.patch(config.baseUrl+`/blog/blog/${id}`, formdata, {
-              headers: {
+        const response = await axios.patch(config.baseUrl + `/blog/blog/${id}`, formdata, {
+            headers: {
                 'Content-Type': 'multipart/form-data',
                 'authorization': localStorage.getItem("token")
-              }
-            });
+            }
+        });
         return response;
     } catch (error) {
         return error
@@ -73,7 +73,7 @@ export const fetchSingleBlogById = createAsyncThunk('blog/fetchSingleBlogById', 
         return error;
     }
 })
-export const deleteBlogById = createAsyncThunk('blog/deleteBlogById', async (id, {dispatch}) => {
+export const deleteBlogById = createAsyncThunk('blog/deleteBlogById', async (id, { dispatch }) => {
     try {
         const result = await deleteData(`/blog/blog/${id}`, authObj);
         dispatch(fetchAllBlogs());
@@ -94,6 +94,7 @@ const blogSlice = createSlice({
         });
         builder.addCase(createBlog.fulfilled, (state, action) => {
             if (action.payload.data.code === 200) {
+                state.selectedBlog = [];
                 showToast('success', action.payload.data.message, action.payload.data.code);
             } else {
                 showToast('error', action.payload.data.message, action.payload.data.code);

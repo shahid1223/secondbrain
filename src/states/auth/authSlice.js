@@ -17,7 +17,8 @@ let authObj = {
 export const authtenticateUser = createAsyncThunk('auth/authtenticateUser', async (userLoginInfo) => {
     try {
         const response = await postData('/auth/login', userLoginInfo);
-        if(response.code === 200){
+        console.log(response)
+        if (response.code === 200) {
             localStorage.setItem("token", response.token);
         }
         return response;
@@ -32,7 +33,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const fetchUserDetail = createAsyncThunk('auth/fetchUserDetail', async () => {
     try {
-        const result = await getData('/auth/fetchuserdetails',authObj);
+        const result = await getData('/auth/fetchuserdetails', authObj);
         return result;
     } catch (error) {
         return error;
@@ -48,10 +49,10 @@ const authSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(authtenticateUser.fulfilled, (state, action) => {
-            state.isAuthenticated = true;
-            state.loading = false;
-            state.token = localStorage.getItem('token');
             if (action.payload.code === 200) {
+                state.isAuthenticated = true;
+                state.loading = false;
+                state.token = localStorage.getItem('token');
                 showToast('success', action.payload.message, action.payload.code);
             } else {
                 showToast('error', action.payload.message, action.payload.code);

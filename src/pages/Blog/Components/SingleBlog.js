@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import DOMPurify from 'dompurify';
 import { useDispatch, useSelector } from "react-redux";
-import {  fetchSingleBlogById } from '../../../states/blog/blogSlice';
+import { fetchSingleBlogById } from '../../../states/blog/blogSlice';
 import { useSearchParams, } from "react-router-dom";
 
 
@@ -27,14 +27,14 @@ const SingleBlog = () => {
       setText('');
       setBlogExtraInfo({ ...blogExtraInfo, draft: "", question: "", discription: "" });
     }
-  }, [dispatch, searchParams, blogExtraInfo]);
+  }, [dispatch, searchParams]);
 
   useEffect(() => {
     if (selectedBlog?.selectedBlog) {
       setText(selectedBlog.selectedBlog.draft);
       setBlogExtraInfo({ ...blogExtraInfo, draft: selectedBlog.selectedBlog.draft, question: selectedBlog.selectedBlog.question, discription: selectedBlog.selectedBlog.sortDiscription });
     }
-  }, [selectedBlog?.selectedBlog, blogExtraInfo]);
+  }, [selectedBlog?.selectedBlog]);
 
 
   // const sanitizedData = () => ({
